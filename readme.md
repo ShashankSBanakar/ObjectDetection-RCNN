@@ -20,7 +20,7 @@ and width and height (x, y, w, h). The objects can be of several classes and the
 recognizes and locates the object in the image also assigns a probability score to each of the bounding boxes 
 indicating the presence of the object of a certain class.
 
-![Bounding Box](../../c:/Users/Shashank/Downloads/Bounding_box.png)
+![Bounding_box](https://user-images.githubusercontent.com/103943776/200113827-e6b4b460-7f61-4833-b80d-c087b99b40e9.png)
 
 One of the first Object Detection models developed was Regional Convolutional Neural Network - RCNN. This project 
 was built with the intention of gaining a deep understanding of the idea behind object detection and so instead of 
@@ -36,7 +36,7 @@ graph-based greedy algorithm. The algorithm ends up producing thousands of bound
 These regions may or may not contain the object.
 Running this algorithm on an image in this project yielded around 2500 bounding boxes per image on an average.
 
-![Selective Search Segmentation](../../c:/Users/Shashank/Downloads/Selective_search_segmentation.png)
+![Selective_search_segmentation](https://user-images.githubusercontent.com/103943776/200113813-f3e6ce3d-95c4-4fda-a39c-c506d73a6379.png)
 
 Each of these proposed bounding boxes in an image generated from the algorithm is passed through the resnet-18
 network, whose classification layer is modified to output probability scores for only 2 classes viz., object and background, and has been 
@@ -59,7 +59,7 @@ with every other bounding box. If the IOU is greater than a preset threshold IOU
 And then move to the next highest score, this process is repeated a number of times until there is only one bounding box 
 around an object for all the objects in the image.
 
-![A test image after passed through the developed Person Detection Model](../../c:/Users/Shashank/OneDrive/Pictures/Screenshots/Screenshot%20(12).png)
+![A test image after passed through the developed Person Detection Model](https://user-images.githubusercontent.com/103943776/200114144-fda1d492-2315-4709-b407-c0df4ab04d76.png)
 
 And voila! We are able to detect people in an image!
 
@@ -78,7 +78,7 @@ After downloading around 420 images of class 'person' and the corresponding labe
 through an app called fiftyone, the labels file (a json file) is filtered to extract only the neccessary 
 data like the bounding box id, bounding box values, image id and the image path. 
 
-![Ground Truth Bounding Box Dataframe](../../c:/Users/Shashank/OneDrive/Pictures/Screenshots/Bbox_df.png)
+![Ground Truth Bounding Box Dataframe](https://user-images.githubusercontent.com/103943776/200114185-a3426be2-27b7-4feb-93bc-e7bf0ff7ba5a.png)
 
 The downloaded dataset is split into train, validation and test set. The training and validation sets are 
 further processed to produce cropped images of the two classes: object and background. This is done 
@@ -97,7 +97,7 @@ Thus, all the images needed to train a nueral network model for binary classific
 being object and background) are now put together in Google Drive as this drive is to be mounted to Google Colab
 notebook (which provides free GPUs for computational efficiency).
 
-![Project Folder uploaded to Google Drive](../../c:/Users/Shashank/OneDrive/Pictures/Screenshots/Drive.png)
+![Project Folder uploaded to Google Drive](https://user-images.githubusercontent.com/103943776/200114213-ec6406c2-5dba-4139-96c2-c3a2f6c8da05.png)
 
 3. Resnet_model.ipynb
 This is where a Convolutional Neural Network is trained to perform the classification task between two classes:
@@ -123,7 +123,7 @@ per object. Although it takes around 20 seconds to run the entire process on a t
 of the disadvantages of R-CNN models) but the model eventually prints the image and detects all the people in the 
 image correctly.
 
-![Model Result](../../c:/Users/Shashank/Downloads/Model_result.png)
+![Model_result](https://user-images.githubusercontent.com/103943776/200114235-b37f5796-05af-433e-bd85-4e564f38c301.png)
 
 Ideas for further work:
 1. Deeper CNNs such as resnet-164 can be used inplace of resnet-18 and see by how much this impoves the performace.
