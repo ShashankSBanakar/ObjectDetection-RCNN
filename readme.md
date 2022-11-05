@@ -1,9 +1,12 @@
-Project Title: Object Detection using R-CNN
+<h1 align="center"> OBJECT DETECTION USING R-CNN </h1>
 
 Building and testing a Region Based Convolutional Neural Network from scratch to detect people in an image using
 Pytorch on Google Colab.
 
-First off, why did I build this project?
+---------------------------------------------------------------------------------------------------------------------
+
+<h3 align='center'> First off, why did I build this project? </h3>
+
 This project fulfills the requirement of completing a project in Computer Vision for the certification course in 
 Data Science from Corpnce, Rajajinagar, Bangalore. But more importantly, this is my first major project and it
 not only feeds my curiosity in Computer Vision, but also helps me get a deeper understanding of how Neural 
@@ -11,8 +14,10 @@ Networks can achieve this fascinating task of detecting objects in an image as m
 the model from the ground up including creating the training, validation and testing datasets, modifying the
 resnet-18 network as per the need, training and testing the network and implementing non-max suppression.
 
+---------------------------------------------------------------------------------------------------------------------
 
-Project Description:
+<h2 align='center'> Project Description </h2>
+
 Object Detection is a computer vision technique of recognizing and locating instances of objects in images.
 A model built to achieve this task achieves this by putting a box around the object and this box is called
 a bounding box. A bounding box is defined by 4 points viz., x and y co-ordinates of the top left corner of the box
@@ -20,7 +25,7 @@ and width and height (x, y, w, h). The objects can be of several classes and the
 recognizes and locates the object in the image also assigns a probability score to each of the bounding boxes 
 indicating the presence of the object of a certain class.
 
-![Bounding_box](https://user-images.githubusercontent.com/103943776/200113827-e6b4b460-7f61-4833-b80d-c087b99b40e9.png)
+![Bounding_box](https://user-images.githubusercontent.com/103943776/200113827-e6b4b460-7f61-4833-b80d-c087b99b40e9.png "Bounding Box") 
 
 One of the first Object Detection models developed was Regional Convolutional Neural Network - RCNN. This project 
 was built with the intention of gaining a deep understanding of the idea behind object detection and so instead of 
@@ -29,7 +34,8 @@ to first work on more basic models like RCNN and then build from there.
 
 The key idea in R-CNN is region proposals and this project uses Selective Search as the region proposal algorithm.
 
-A brief on Selective Search Algorithm:
+<h4> A brief on Selective Search Algorithm: </h4>
+
 The algorithm generates sub-segmentations of input image and then combines these small sub-segmentations based on 
 similarities in colour, texture, size and fill until the entire image becomes a region itself. The creation of initial regions by the algorithm is done using a 
 graph-based greedy algorithm. The algorithm ends up producing thousands of bounding boxes of all scales and aspect ratios.
@@ -53,7 +59,7 @@ A pre-requisite to understand Non-Max Suppression is Intersection-Over-Union (IO
 a measure of overlap of two bounding boxes. As the name suggests, IOU divides the intersection area of the two boxes 
 by the union area. 
 
-Non-Max Suppression, in simple terms, keeps the bounding box with highest score and eliminates the rest of them.
+**Non-Max Suppression**, in simple terms, keeps the bounding box with highest score and eliminates the rest of them.
 Among the list of proposed bounding boxes, NMS first chooses the bounding box with highest score and then calcluates IOU
 with every other bounding box. If the IOU is greater than a preset threshold IOU then NMS eliminates this bounding box with lower score.
 And then move to the next highest score, this process is repeated a number of times until there is only one bounding box 
@@ -63,16 +69,19 @@ around an object for all the objects in the image.
 
 And voila! We are able to detect people in an image!
 
+---------------------------------------------------------------------------------------------------------------------
 
-Contents Of The Repository:
+<h2 align='center'>Contents Of The Repository:</h2>
 This repository contains four .ipynb files and a .pt file, the contents and objective of each are explained in
 detail next:
 
-1. utils.ipynb
+<h4>1. utils.ipynb </h4>
+
 This file contains the function defined to calculate Intersection Over Union (IOU). The function simply accepts 
 two bounding boxes as input and outputs the IOU.
 
-2. Pre-processing.ipynb
+<h4>2. Pre-processing.ipynb </h4>
+
 Creating train, validation and test images for the model is all taken care of by this notebook.
 After downloading around 420 images of class 'person' and the corresponding labels from coco-2017 dataset
 through an app called fiftyone, the labels file (a json file) is filtered to extract only the neccessary 
@@ -99,7 +108,7 @@ notebook (which provides free GPUs for computational efficiency).
 
 ![Project Folder uploaded to Google Drive](https://user-images.githubusercontent.com/103943776/200114213-ec6406c2-5dba-4139-96c2-c3a2f6c8da05.png)
 
-3. Resnet_model.ipynb
+<h4>3. Resnet_model.ipynb </h4>
 This is where a Convolutional Neural Network is trained to perform the classification task between two classes:
 object and background. The training images and validation images, after passing through transforms, 
 are subjected to Imbalanced Data Sampler function to account for the imbalanced dataset (more number of background
@@ -109,7 +118,7 @@ The CNN used for this project is resnet-18, whose final layer is modified as per
 the model and its parameters are saved when the validation loss is at its least, and this saved model plays 
 a pivotal role in the project.
 
-4. Person_detection.ipynb
+<h4> 4. Person_detection.ipynb </h4>
 Non-max Suppression, Intersection-Over-Union, trained resnet network, saved training, validation and test images, 
 everything explained so far come together and work as a well-oiled machine here in this notebook.
 
@@ -125,9 +134,11 @@ image correctly.
 
 ![Model_result](https://user-images.githubusercontent.com/103943776/200114235-b37f5796-05af-433e-bd85-4e564f38c301.png)
 
-Ideas for further work:
-1. Deeper CNNs such as resnet-164 can be used inplace of resnet-18 and see by how much this impoves the performace.
-Understandably, this would take lot longer to train and test, but it'd be fascinating to look at the results.
+---------------------------------------------------------------------------------------------------------------------
+
+<h2 align='center'> Ideas for further work </h2>
+
+1. Deeper CNNs such as resnet-164 can be used inplace of resnet-18 and see by how much this impoves the performace. Understandably, this would take lot longer to train and test, but it'd be fascinating to look at the results.
 2. Improve upon the built object detection RCNN model to implement Fast-RCNN and Faster-RCNN.
 3. Modify the project to accomodate more than 2 classes. Along with detecting people, the model can be trained to
 detect vehicles, animals or whatever the aim of the project is.
@@ -135,9 +146,12 @@ detect vehicles, animals or whatever the aim of the project is.
 if this brings a major imporvement in the CNN's performance.
 5. Rewrite the code following OOPS concepts.
 
-References:
+---------------------------------------------------------------------------------------------------------------------
+
+<h2 align='center'> References <h2>
+  
 1. https://medium.com/visionwizard/object-detection-4bf3edadf07f
-2. https://medium.com/@selfouly/r-cnn-3a9beddfd55a
-3. https://towardsdatascience.com/step-by-step-r-cnn-implementation-from-scratch-in-python-e97101ccde55
-4. https://pyimagesearch.com/2020/07/13/r-cnn-object-detection-with-keras-tensorflow-and-deep-learning/
-5. https://youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF
+  2. https://medium.com/@selfouly/r-cnn-3a9beddfd55a
+  3. https://towardsdatascience.com/step-by-step-r-cnn-implementation-from-scratch-in-python-e97101ccde55
+  4. https://pyimagesearch.com/2020/07/13/r-cnn-object-detection-with-keras-tensorflow-and-deep-learning/
+  5. https://youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF
